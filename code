@@ -1,0 +1,123 @@
+ 
+import java.util.Scanner;
+public class Main
+{
+    public static void main(String[] args) {
+        //Input
+        System.out.println("Eingabe ∈ z"); //keine lust immer ,0 zu schreiben
+        
+        System.out.println("1) ax^2+bx+c");
+        System.out.println("2) ax^3+bx^2+cx");
+        Scanner chose = new Scanner(System.in);
+        System.out.println("wähle");
+        int desicion = chose.nextInt();
+        
+        /*
+        Scanner inX = new Scanner(System.in);
+        System.out.println("def x = ");
+        int x = inX.nextInt();
+        */
+        
+        Scanner inA = new Scanner(System.in);
+        System.out.println("def a = ");
+        int a = inA.nextInt();
+        
+        Scanner inB = new Scanner(System.in);
+        System.out.println("def b = ");
+        int b = inB.nextInt();
+        
+        Scanner inC = new Scanner(System.in);
+        System.out.println("def c = ");
+        int c = inC.nextInt();
+        //brauche noch eing=0 für alle
+        //Später Variationsmöglichkeiten
+        if (desicion==1){
+        //max or min
+            if (a==0){
+                System.out.println("nix Parabel");
+            }
+            else{ 
+                if (a>0){
+                    System.out.println("min =");
+                }
+                
+                else{
+                    System.out.println("max =");
+                }
+            }    
+        //xs, ys
+        double xS = -b/2*a;
+        double yS = a*(xS*xS)+b*xS+c;
+        System.out.println("S ("+xS+"|"+yS+")");
+        
+        //test for NST; print NST
+        double dis = (b*b)-(4*a*c);
+        if (dis<0){
+            System.out.println("Keine NST vorhanden");
+        }
+        else{
+            if (dis==0){
+                System.out.println("Eine dopellte NST vorhanden:");
+                double oI = -b/(2*a);
+                System.out.println("x = "+oI);
+            }
+            else{
+                System.out.println("Zwei einfache NST vorhanden:");
+                double oI = (-b+ Math.sqrt(dis))/(2*a);
+                double oZ = (-b- Math.sqrt(dis))/(2*a);
+                System.out.println("x1 = "+oI+"; x2 = "+oZ);
+            }
+        }
+        if (a!=0){
+            System.out.println("Verlauf");
+            
+            System.out.println("von x = ");
+            Scanner verlaufB = new Scanner(System.in);
+            int start = verlaufB.nextInt();
+            
+            System.out.println("bis x = ");
+            Scanner verlaufE = new Scanner(System.in);
+            int ende = verlaufE.nextInt();
+            
+            System.out.println("Schritweite = ");
+            Scanner sW = new Scanner(System.in);
+            int schW = sW.nextInt();
+            
+        //mache ich hier rein da break ja nicht will
+        for (start=start; start!=ende; start+=schW){//hier kleinergleich/event noch andere richtung 
+            System.out.println("(x = "+ start +")"+(a*(start*start)+b*start+c));
+        }
+        }
+        }
+        //2./benötigt noch opt für a=0
+        else{
+            if (desicion==2){
+                
+                //test for NST
+                byte xI = 0;
+                double dis = (b*b)-(4*a*c);
+                if (dis<0){
+                    System.out.println("x1,2,3 = "+xI);
+                    }
+                else{
+                    if (dis==0){
+                        System.out.println("x1 = "+xI);
+                        double xZE = -b/(2*a);
+                        System.out.println("x2,3 = "+xZE);
+                    }
+                    else{
+                        System.out.println("x1 = "+xI);
+                        double xZ = (-b+dis)/(2*a);
+                        double xE = (-b-dis)/(2*a);
+                        System.out.println("x2 = "+xZ);
+                        System.out.println("x3 = "+xE);
+                    }
+                }
+            }
+            else{
+                System.out.println("Eingabe ungültig");//passender vor dev
+            }
+        }
+    }    
+  
+} 
